@@ -18,7 +18,7 @@ export class CarService {
     public getCarById(id: string): Promise<any> {
         const carId = String(id);
         return new Promise((resolve) => {
-            const car = this.cars.find((car) => car.id === carId);
+            const car = this.cars.find((car) =>String(car.id) === carId);
             if (!car) {
                 throw new HttpException('Not Found', 404);
             }
@@ -29,7 +29,7 @@ export class CarService {
     public deleteCarById(id: string): Promise<any> {
         const carId = String(id);
         return new Promise((resolve) => {
-            const index = this.cars.findIndex((car) => car.id === carId);
+            const index = this.cars.findIndex((car) =>String(car.id) === carId);
             if (index === -1) {
                 throw new HttpException('Not Found', 404);
             }
@@ -41,7 +41,7 @@ export class CarService {
     public putCarById(id: string, propertyName: string, propertyValue: string) {
         const carId= String(id);
         return new Promise((resolve) => {
-        const index = this.cars.findIndex((car) => car.id === carId);
+        const index = this.cars.findIndex((car) => String(car.id) === carId);
         if (index === -1) {
             throw new HttpException('Not Found', 404);
         }

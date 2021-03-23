@@ -20,12 +20,12 @@ export class CarController {
         return this.carService.getCarById(id);
     }
 
-    @Delete()
+    @Delete(':id')
     public async deleteCarById(@Param('id') id:string){
         this.carService.deleteCarById(id);
     }
 
-    @Put()
+    @Put(':id')
     public async putCarById(@Param('id') id:string, @Query() query){
         const propertyName= query.property_name;
         const propertyValue=query.property_value;
